@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="ProyectoParqueaderoPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>ec.edu.ups.modelo.Cliente</class>
+    <class>ec.edu.ups.modelo.Factura</class>
+    <class>ec.edu.ups.modelo.Persona</class>
+    <class>ec.edu.ups.modelo.Registro</class>
+    <class>ec.edu.ups.modelo.Reserva</class>
+    <class>ec.edu.ups.modelo.Sitio</class>
+    <class>ec.edu.ups.modelo.TablaPrecios</class>
+    <class>ec.edu.ups.modelo.TicketSalida</class>
+    <class>ec.edu.ups.modelo.Usuario</class>
+    <class>ec.edu.ups.modelo.Vehiculo</class>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/Parqueadero"/>
+      <property name="javax.persistence.jdbc.user" value="postgres"/>
+      <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+      <property name="javax.persistence.jdbc.password" value="john"/>
+      <property name="javax.persistence.schema-generation.database.action" value="create"/>
+    </properties>
+  </persistence-unit>
+</persistence>
