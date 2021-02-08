@@ -9,10 +9,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-/**
- *
- * @author LENOVO
- */
 public class JPAUtils {
         
     private static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("ProyectoParqueaderoPU");
