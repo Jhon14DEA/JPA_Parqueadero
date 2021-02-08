@@ -26,29 +26,28 @@ import javax.persistence.Table;
 @NamedQueries({
     @NamedQuery(name = "TicketSalida.findAll", query = "SELECT s FROM TicketSalida s"),
     @NamedQuery(name = "TicketSalida.findBycodigo", query = "SELECT s FROM TicketSalida s WHERE s.codigo = :codigo"),})
-public class TicketSalida implements Serializable, ITicket{
+public class TicketSalida implements Serializable, ITicket {
 
-     @Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "codigo")
     int codigo;
-     @Column(name = "texto")
+    @Column(name = "texto")
     String texto;
 
     public TicketSalida() {
     }
 
-public TicketSalida(String texto){
-    this.texto=texto;
-}
+    public TicketSalida(String texto) {
+        this.texto = texto;
+    }
 
-   
-     @Override
+    @Override
     public void mostrar() {
         jfTicket ticket = new jfTicket();
         ControladorJfTicket controladorJfticket = new ControladorJfTicket("TICKET DE SALIDA", texto, ticket);
         controladorJfticket.iniciar();
-        
+
     }
 
     public String getTexto() {
@@ -59,7 +58,4 @@ public TicketSalida(String texto){
         this.texto = texto;
     }
 
-
-   
-    
 }

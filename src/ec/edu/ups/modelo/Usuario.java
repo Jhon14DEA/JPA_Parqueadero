@@ -14,23 +14,21 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import org.apache.commons.codec.digest.DigestUtils;
 
-
 /**
  *
  */
-
 @Entity
-@Table(name ="Usuarios")
+@Table(name = "Usuarios")
 @NamedQueries({
     @NamedQuery(name = "Usuario.findAll", query = "SELECT u FROM Usuario u"),
-    @NamedQuery(name = "Usuario.findByCedula", query = "SELECT u FROM Usuario u WHERE u.nombreUsuario = :nombreUsuario"),
-})
+    @NamedQuery(name = "Usuario.findByCedula", query = "SELECT u FROM Usuario u WHERE u.nombreUsuario = :nombreUsuario"),})
 public class Usuario extends Persona {
+
     @Column(name = "nombreUsuario")
     private String nombreUsuario;
-     @Column(name = "contraseña")
+    @Column(name = "contraseña")
     private String contraseña;
-      @Column(name = "perfilUsuario")
+    @Column(name = "perfilUsuario")
     private String perfilUsuario;
 
     public Usuario() {
@@ -47,10 +45,11 @@ public class Usuario extends Persona {
     }
 
     public void setNombreUsuario(String nombreUsuario) throws RequeridoExcepcion {
-        if(nombreUsuario.length() != 0)
-        this.nombreUsuario = nombreUsuario;
-        else
+        if (nombreUsuario.length() != 0) {
+            this.nombreUsuario = nombreUsuario;
+        } else {
             throw new RequeridoExcepcion("nombre de usuario");
+        }
     }
 
     public String getContraseña() {
@@ -58,10 +57,11 @@ public class Usuario extends Persona {
     }
 
     public void setContraseña(String contraseña) throws RequeridoExcepcion {
-        if(contraseña.length() != 0)
-        this.contraseña = DigestUtils.md5Hex(contraseña);//encriptando la contraseña
-        else
+        if (contraseña.length() != 0) {
+            this.contraseña = DigestUtils.md5Hex(contraseña);//encriptando la contraseña
+        } else {
             throw new RequeridoExcepcion("contraseña");
+        }
     }
 
     public String getPerfilUsuario() {
@@ -71,15 +71,13 @@ public class Usuario extends Persona {
     public void setPerfilUsuario(String perfilUsuario) {
         this.perfilUsuario = perfilUsuario;
     }
-    
-    
 
     @Override
     public String toString() {
         return "Usuario{" + "nombreUsuario=" + nombreUsuario + ", contrase\u00f1a=" + contraseña + '}';
     }
-    
-     @Override
+
+    @Override
     public int hashCode() {
         int hash = 5;
         hash = 97 * hash + Objects.hashCode(this.nombreUsuario);
@@ -107,5 +105,5 @@ public class Usuario extends Persona {
         }
         return true;
     }
-    
+
 }

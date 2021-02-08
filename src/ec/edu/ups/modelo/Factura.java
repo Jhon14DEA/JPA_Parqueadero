@@ -39,13 +39,13 @@ public class Factura implements Serializable {
     @Temporal(javax.persistence.TemporalType.TIME)
     private Calendar fecha;
     @OneToOne
-    @JoinColumn(name="registro_id", nullable = false)
+    @JoinColumn(name = "registro_id", nullable = false)
     private Registro registro;
     @OneToOne
-    @JoinColumn(name="reserva_id", nullable = false)
+    @JoinColumn(name = "reserva_id", nullable = false)
     private Reserva reserva;
     private double iva;
-    @Column(name ="total_Pagar")
+    @Column(name = "total_Pagar")
     private double totalapagar;
 
     public Factura() {

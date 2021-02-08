@@ -30,18 +30,18 @@ import javax.persistence.Table;
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @NamedQueries({
     @NamedQuery(name = "Persona.findAll", query = "SELECT p FROM Persona p"),
-    @NamedQuery(name = "Persona.findByCedula", query = "SELECT p FROM Persona p WHERE p.codigoIdentificacion = :cedula"),
-})
-public class Persona implements Serializable{
+    @NamedQuery(name = "Persona.findByCedula", query = "SELECT p FROM Persona p WHERE p.codigoIdentificacion = :cedula"),})
+public class Persona implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "codigo")
     private int codigo;
     @Column(name = "cedula", nullable = false, length = 10)
     private String codigoIdentificacion;
-     @Column(name = "nombre")
+    @Column(name = "nombre")
     private String nombre;
-      @Column(name = "apellido")
+    @Column(name = "apellido")
     private String apellido;
     @Column(name = "correo")
     private String correo;
@@ -60,7 +60,6 @@ public class Persona implements Serializable{
         this.correo = correo;
         this.numeroTelefono = numeroTelefono;
     }
-    
 
     public int getCodigo() {
         return codigo;
@@ -75,17 +74,18 @@ public class Persona implements Serializable{
     }
 
     public void setCodigoIdentificacion(String codigoIdentificacion) throws CedulaExcepcion, RequeridoExcepcion {
-        if(codigoIdentificacion.length() != 0)
-        {
+        if (codigoIdentificacion.length() != 0) {
             ec.edu.ups.validar.ValidarFabrica validarFabrica = new ec.edu.ups.validar.ValidarFabrica();
-        IValidar validarCedula = validarFabrica.getTipo("cedula");
-        if(validarCedula.validar(codigoIdentificacion))
-        this.codigoIdentificacion = codigoIdentificacion;
-        else
-            throw new CedulaExcepcion(); 
+            IValidar validarCedula = validarFabrica.getTipo("cedula");
+            if (validarCedula.validar(codigoIdentificacion)) {
+                this.codigoIdentificacion = codigoIdentificacion;
+            } else {
+                throw new CedulaExcepcion();
+            }
+        } else {
+            throw new RequeridoExcepcion("cedula");
         }
-        else throw new RequeridoExcepcion("cedula");
-       
+
     }
 
     public String getNombre() {
@@ -93,17 +93,17 @@ public class Persona implements Serializable{
     }
 
     public void setNombre(String nombre) throws TextoExcepcion, RequeridoExcepcion {
-        if(nombre.length() != 0)
-        {
+        if (nombre.length() != 0) {
             ec.edu.ups.validar.ValidarFabrica validarFabrica = new ec.edu.ups.validar.ValidarFabrica();
             IValidar validarTexto = validarFabrica.getTipo("texto");
-            if(validarTexto.validar(nombre))
+            if (validarTexto.validar(nombre)) {
                 this.nombre = nombre;
-        else
-            throw new TextoExcepcion();
-        }
-        else
+            } else {
+                throw new TextoExcepcion();
+            }
+        } else {
             throw new RequeridoExcepcion("nombre");
+        }
     }
 
     public String getApellido() {
@@ -111,17 +111,17 @@ public class Persona implements Serializable{
     }
 
     public void setApellido(String apellido) throws TextoExcepcion, RequeridoExcepcion {
-         if(apellido.length() != 0)
-        {
+        if (apellido.length() != 0) {
             ec.edu.ups.validar.ValidarFabrica validarFabrica = new ec.edu.ups.validar.ValidarFabrica();
             IValidar validarTexto = validarFabrica.getTipo("texto");
-            if(validarTexto.validar(nombre))
+            if (validarTexto.validar(nombre)) {
                 this.apellido = apellido;
-        else
-            throw new TextoExcepcion();
-        }
-        else
+            } else {
+                throw new TextoExcepcion();
+            }
+        } else {
             throw new RequeridoExcepcion("apellido");
+        }
     }
 
     public String getCorreo() {
@@ -129,18 +129,17 @@ public class Persona implements Serializable{
     }
 
     public void setCorreo(String correo) throws EmailExcepcion {
-        if(correo.length() != 0)
-        {
+        if (correo.length() != 0) {
             ec.edu.ups.validar.ValidarFabrica validarFabrica = new ec.edu.ups.validar.ValidarFabrica();
             IValidar validarCorreo = validarFabrica.getTipo("email");
-            if(validarCorreo.validar(correo))
+            if (validarCorreo.validar(correo)) {
                 this.correo = correo;
-        
-        else
-            throw new EmailExcepcion();
-        }
-        else
+            } else {
+                throw new EmailExcepcion();
+            }
+        } else {
             this.correo = correo;
+        }
     }
 
     public String getNumeroTelefono() {
@@ -148,18 +147,17 @@ public class Persona implements Serializable{
     }
 
     public void setNumeroTelefono(String numeroTelefono) throws TelefonoExcepcion {
-        if(numeroTelefono.length() != 0)
-        {
+        if (numeroTelefono.length() != 0) {
             ec.edu.ups.validar.ValidarFabrica validarFabrica = new ec.edu.ups.validar.ValidarFabrica();
             IValidar validarNumero = validarFabrica.getTipo("entero");
-            if(validarNumero.validar(numeroTelefono))
+            if (validarNumero.validar(numeroTelefono)) {
                 this.numeroTelefono = numeroTelefono;
-        
-        else
-            throw new TelefonoExcepcion();
-        }
-        else
+            } else {
+                throw new TelefonoExcepcion();
+            }
+        } else {
             this.numeroTelefono = numeroTelefono;
+        }
     }
 
     @Override

@@ -5,7 +5,6 @@
  */
 package ec.edu.ups.modelo;
 
-
 import ec.edu.ups.controlador.ControladorJfTicket;
 import ec.edu.ups.interfaz.ITicket;
 import ec.edu.ups.vista.jfTicket;
@@ -13,11 +12,12 @@ import ec.edu.ups.vista.jfTicket;
 /**
  *
  */
-public class TicketIngreso implements ITicket{
+public class TicketIngreso implements ITicket {
+
     String texto;
-    
-    public TicketIngreso(String texto){
-        this.texto=texto;
+
+    public TicketIngreso(String texto) {
+        this.texto = texto;
     }
 
     @Override
@@ -25,9 +25,7 @@ public class TicketIngreso implements ITicket{
         jfTicket ticket = new jfTicket();
         ControladorJfTicket controladorJfticket = new ControladorJfTicket("TICKET DE INGRESO", texto, ticket);
         controladorJfticket.iniciar();
-        
+
     }
 
-
-    
 }

@@ -138,5 +138,4 @@ public class TablaPrecios implements Serializable {
         return true;
     }
 
-    
 }

@@ -11,14 +11,17 @@ import ec.edu.ups.interfaz.ITicket;
  *
  */
 public class TicketFabrica {
-    public ITicket getTipo(String Tipo, String contenido)
-    {
-        switch(Tipo)
-        {
-            case "ingreso": return new TicketIngreso(contenido);
-            case "salida": return new TicketSalida(contenido);
-            case "reserva": return new TicketReserva(contenido);
-            default:return null;
+
+    public ITicket getTipo(String Tipo, String contenido) {
+        switch (Tipo) {
+            case "ingreso":
+                return new TicketIngreso(contenido);
+            case "salida":
+                return new TicketSalida(contenido);
+            case "reserva":
+                return new TicketReserva(contenido);
+            default:
+                return null;
         }
-    }    
+    }
 }
